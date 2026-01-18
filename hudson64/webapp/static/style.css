@@ -1,0 +1,218 @@
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
+  background: #f6f7f9;
+  color: #111;
+}
+
+.page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.boardCard {
+  width: 620px;
+  background: #fff;
+  border: 1px solid #e2e2e2;
+  border-radius: 16px;
+  box-shadow: 0 18px 48px rgba(0,0,0,0.08);
+  overflow: hidden;
+}
+
+.boardHeader {
+  padding: 14px 16px;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: center;
+}
+
+.boardTitle {
+  font-weight: 750;
+  letter-spacing: 0.2px;
+  font-size: 16px;
+}
+
+.boardStage {
+  position: relative;
+  padding: 16px;
+}
+
+/* Center board + eval bar as one unit */
+.boardRow {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+/* Ensures board has its own clean container */
+.boardWrap {
+  width: 520px;
+  height: 520px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #ddd;
+  background: white;
+}
+
+.board {
+  width: 520px;
+  height: 520px;
+
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+}
+
+.square {
+  position: relative;
+  user-select: none;
+}
+
+.light { background: #f0d9b5; }
+.dark  { background: #b58863; }
+
+.square.highlight {
+  outline: 3px solid rgba(90, 140, 255, 0.72);
+  outline-offset: -3px;
+}
+
+.piece {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.piece img {
+  width: 88%;
+  height: 88%;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+/* Eval bar */
+.evalCol {
+  width: 44px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.evalTrack {
+  width: 16px;
+  height: 520px;
+  border-radius: 999px;
+  background: #111;
+  overflow: hidden;
+  border: 1px solid #ddd;
+  position: relative;
+}
+
+.evalFill {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: #fff;
+}
+
+.evalText {
+  font-variant-numeric: tabular-nums;
+  font-weight: 650;
+  font-size: 13px;
+  color: #111;
+}
+
+/* Status line */
+.status {
+  padding: 12px 16px;
+  border-top: 1px solid #eee;
+  font-size: 13px;
+  color: #333;
+  text-align: center;
+}
+
+/* Overlay covers FULL boardStage cleanly */
+.overlay {
+  position: absolute;
+  inset: 16px; /* exactly matches boardStage padding */
+  display: grid;
+  place-items: center;
+  background: rgba(255,255,255,0.70);
+  backdrop-filter: blur(6px);
+  border-radius: 12px;
+}
+
+.overlay.hidden {
+  display: none;
+}
+
+.overlayBox {
+  width: 280px;
+  background: #fff;
+  border: 1px solid #e2e2e2;
+  border-radius: 14px;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.15);
+  padding: 16px;
+  text-align: center;
+}
+
+.overlayTitle {
+  font-weight: 750;
+  margin-bottom: 12px;
+}
+
+.overlayBtns {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.btn {
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  background: white;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: #f1f1f1;
+}
+
+.btnSecondary {
+  background: #111;
+  color: #fff;
+  border-color: #111;
+}
+
+.btnSecondary:hover {
+  background: #2a2a2a;
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+  .boardCard { width: min(620px, 95vw); }
+
+  .boardWrap {
+    width: min(520px, 82vw);
+    height: min(520px, 82vw);
+  }
+
+  .board {
+    width: 100%;
+    height: 100%;
+  }
+
+  .evalTrack {
+    height: min(520px, 82vw);
+  }
+}

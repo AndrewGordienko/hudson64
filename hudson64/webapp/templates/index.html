@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Hudson64</title>
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+  <div class="page">
+    <section class="boardCard">
+      <div class="boardHeader">
+        <div class="boardTitle">Hudson64</div>
+      </div>
+
+      <div class="boardStage">
+        <div class="boardRow">
+          <div class="boardWrap">
+            <div id="board" class="board" aria-label="chessboard"></div>
+          </div>
+
+          <div class="evalCol" aria-label="evaluation bar">
+            <div class="evalTrack" title="Eval: white up = more white">
+              <div id="evalFill" class="evalFill"></div>
+            </div>
+            <div id="evalText" class="evalText">0.00</div>
+          </div>
+        </div>
+
+        <!-- Overlay covers the whole stage (board + eval) -->
+        <div id="overlay" class="overlay">
+          <div class="overlayBox">
+            <div class="overlayTitle">Choose a side</div>
+            <div class="overlayBtns">
+              <button id="playWhite" class="btn">Play White</button>
+              <button id="playBlack" class="btn btnSecondary">Play Black</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="status" class="status">Select a side to start.</div>
+    </section>
+  </div>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
